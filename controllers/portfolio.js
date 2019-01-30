@@ -1,20 +1,20 @@
-const Section = require('../models').Section;
+const Portfolio = require('../models').Portfolio;
 
 module.exports = {
     create(req, res, next){
         console.log(req.body); 
-        return Section.create({
+        return Portfolio.create({
             title: req.body.title,
             description: req.body.description,
             photo: req.body.photo,
             isPublic: req.body.isPublic,
         })
-        .then(section => res.status(201).send(section))
+        .then(portfolio => res.status(201).send(portfolio))
         .catch(error => res.status(400).send(error));
     },
     index(req, res){
-        Section.findAll().then(sections => {
-            res.send(JSON.stringify(sections));
+        Portfolio.findAll().then(portfolios => {
+            res.send(JSON.stringify(portfolios));
         })
     }
 };

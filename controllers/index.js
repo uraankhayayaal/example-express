@@ -1,7 +1,7 @@
 const user = require('./user');
-const section = require('./section');
+const portfolio = require('./portfolio');
 
 module.exports = {
     user,
-    section
+    portfolio
 };

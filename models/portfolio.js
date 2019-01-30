@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const Section = sequelize.define('Section', {
+  const Portfolio = sequelize.define('Portfolio', {
     photo: DataTypes.STRING,
     title: {
       type: DataTypes.STRING,
@@ -10,12 +10,12 @@ module.exports = (sequelize, DataTypes) => {
     isPublic: DataTypes.BOOLEAN,
     status: DataTypes.INTEGER
   }, {});
-  Section.associate = function(models) {
+  Portfolio.associate = function(models) {
     // associations can be defined here
-    Section.belongsTo(models.User, {
+    Portfolio.belongsTo(models.User, {
       foreignKey: 'userId',
       onDelete: 'CASCADE'
     })
   };
-  return Section;
+  return Portfolio;
 };

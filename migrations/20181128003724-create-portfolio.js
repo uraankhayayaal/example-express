@@ -1,15 +1,28 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Histories', {
+    return queryInterface.createTable('Portfolios', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      hash: {
+      photo: {
         type: Sequelize.STRING
+      },
+      title: {
+        type: Sequelize.STRING,
+        allowNull: false
+      },
+      description: {
+        type: Sequelize.STRING
+      },
+      isPublic: {
+        type: Sequelize.BOOLEAN
+      },
+      status: {
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,
@@ -27,28 +40,10 @@ module.exports = {
           key: 'id',
           as: 'userId'
         }
-      },
-      gameId: {
-        type: Sequelize.INTEGER,
-        onDelete: 'CASCADE',
-        references: {
-          model: 'Games',
-          key: 'id',
-          as: 'gameId'
-        }
-      },
-      cityId: {
-        type: Sequelize.INTEGER,
-        onDelete: 'CASCADE',
-        references: {
-          model: 'Cities',
-          key: 'id',
-          as: 'cityId'
-        }
       }
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Histories');
+    return queryInterface.dropTable('Portfolios');
   }
 };
