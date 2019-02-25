@@ -1,4 +1,5 @@
 const Portfolio = require('../models').Portfolio;
+const User = require('../models').User;
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op
 
@@ -15,7 +16,9 @@ module.exports = {
         .catch(error => res.status(400).send(error));
     },
     index(req, res){
-        Portfolio.findAll().then(portfolios => {
+        Portfolio.findAll({
+            include: [User]
+        }).then(portfolios => {
             res.send(JSON.stringify(portfolios));
         })
     },

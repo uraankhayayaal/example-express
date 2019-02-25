@@ -13,5 +13,10 @@ module.exports = {
         User.findAll().then(users => {
             res.send(JSON.stringify(users));
         })
-    }
+    },
+    view(req, res){
+        User.findById(req.params.id).then(user => {
+            res.send(JSON.stringify(user));
+        })
+    },
 };
